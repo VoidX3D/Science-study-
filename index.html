@@ -2,231 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevUniverse | The Central Hub</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Class 9 Science | Comprehensive Guide</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-        /* INLINE CRITICAL CSS FOR SPEED */
         :root {
-            --accent: #00f2fe;
-            --secondary: #4facfe;
-            --bg: #050505;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text: #e0e0e0;
+            --primary: #2C3E50; --accent: #27AE60; --bg: #F7F9F9;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--bg); 
-            color: var(--text); 
-            overflow-x: hidden; 
-        }
-
-        /* Animated Background Canvas */
-        #bg-canvas {
-            position: fixed;
-            top: 0; left: 0;
-            z-index: -1;
-            filter: blur(50px);
-            opacity: 0.5;
-        }
-
-        /* Glassmorphism Navbar */
-        nav {
-            position: fixed;
-            width: 100%;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .logo { font-size: 1.5rem; font-weight: 800; background: linear-gradient(to right, var(--accent), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* Hero Section with Parallax */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            perspective: 1000px;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            margin-bottom: 20px;
-            transform: translateZ(50px);
-            text-shadow: 0 0 30px rgba(0,242,254,0.5);
-        }
-
-        /* The Hub Grid */
-        .hub-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            padding: 100px 10%;
-        }
-
-        .topic-card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .topic-card:hover {
-            transform: translateY(-15px);
-            background: rgba(255,255,255,0.1);
-            border-color: var(--accent);
-        }
-
-        .topic-card i { font-size: 3rem; color: var(--accent); margin-bottom: 20px; }
-
-        /* JavaScript Interaction Demo */
-        .interactive-demo {
-            padding: 100px 10%;
-            background: #0a0a0a;
-        }
-
-        #js-playground {
-            width: 100%;
-            height: 400px;
-            background: #111;
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .floating-orb {
-            width: 100px; height: 100px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 50px var(--accent);
-            cursor: move;
-        }
-
-        /* Footer */
-        footer { padding: 50px; text-align: center; opacity: 0.6; }
-
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--primary); margin: 0; }
+        .hero { height: 40vh; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 50px; max-width: 1200px; margin: auto; }
+        .unit-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; text-decoration: none; color: inherit; border-left: 5px solid var(--accent); }
+        .unit-card:hover { transform: translateY(-10px); background: #f0fff4; }
+        .unit-num { font-weight: bold; color: var(--accent); }
     </style>
 </head>
 <body>
-
-    <nav>
-        <div class="logo">DEV_HUB v1.0</div>
-        <div class="menu">
-            <button class="btn-primary" onclick="toggleTheme()">Sync Data</button>
+    <header class="hero">
+        <div>
+            <h1>Grade 9 Science & Technology</h1>
+            <p>Master your curriculum with interactive lessons & animations</p>
         </div>
-    </nav>
+    </header>
 
-    <div class="hero" id="scene">
-        <h1 data-depth="0.2">Explore the Stack</h1>
-        <p data-depth="0.6">A 1,000-line architecture for modern learners.</p>
-    </div>
-
-    <section class="hub-grid">
-        <div class="topic-card reveal" onclick="location.href='html-depth.html'">
-            <i class="fab fa-html5"></i>
-            <h3>Semantic Architecture</h3>
-            <p>Deep dive into DOM trees, SEO metadata, and accessibility standards.</p>
-        </div>
-
-        <div class="topic-card reveal" onclick="location.href='css-depth.html'">
-            <i class="fab fa-css3-alt"></i>
-            <h3>Visual Engines</h3>
-            <p>Master Grid, Flexbox, and complex Keyframe animations with GPU acceleration.</p>
-        </div>
-
-        <div class="topic-card reveal" onclick="location.href='js-depth.html'">
-            <i class="fab fa-js"></i>
-            <h3>Logic & Runtime</h3>
-            <p>Closures, Promises, and Async/Await patterns explained through visualizers.</p>
-        </div>
-    </section>
-
-    <section class="interactive-demo">
-        <h2>Live JS Engine Demo</h2>
-        <p>Drag the element below. This demonstrates Event Listeners and DOM Manipulation.</p>
-        <div id="js-playground">
-            <div class="floating-orb" id="orb"></div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 DevUniverse Hub. Built with pure logic.</p>
-    </footer>
+    <main class="grid-container">
+        <a href="unit1-scientific-study.html" class="unit-card">
+            <span class="unit-num">Unit 1</span>
+            <h3>Scientific Study</h3>
+            <p>Master the steps of scientific learning and experimental safety.</p>
+        </a>
+        <a href="unit2-classification.html" class="unit-card">
+            <span class="unit-num">Unit 2</span>
+            <h3>Classification of Living Beings</h3>
+            <p>Explore the diverse kingdoms of life.</p>
+        </a>
+        </main>
 
     <script>
-        // 1. SCROLL REVEAL SYSTEM
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(50px)";
-            el.style.transition = "all 0.8s ease-out";
-            observer.observe(el);
-        });
-
-        // 2. DRAGGABLE LOGIC (JS INTERACTIVITY)
-        const orb = document.getElementById('orb');
-        let isDragging = false;
-
-        orb.onmousedown = function(event) {
-            isDragging = true;
-            orb.style.cursor = 'grabbing';
-        };
-
-        document.onmousemove = function(event) {
-            if (!isDragging) return;
-            let x = event.clientX - orb.offsetWidth / 2;
-            let y = event.clientY - orb.offsetHeight / 2;
-            orb.style.position = 'fixed';
-            orb.style.left = x + 'px';
-            orb.style.top = y + 'px';
-        };
-
-        document.onmouseup = function() {
-            isDragging = false;
-            orb.style.cursor = 'move';
-        };
-
-        // 3. THEME SYNCHRONIZER
-        function toggleTheme() {
-            const root = document.documentElement;
-            const isDark = getComputedStyle(root).getPropertyValue('--bg').trim() === '#050505';
-            
-            if(isDark) {
-                root.style.setProperty('--bg', '#f0f0f0');
-                root.style.setProperty('--text', '#111');
-                root.style.setProperty('--card-bg', 'rgba(0,0,0,0.05)');
-            } else {
-                root.style.setProperty('--bg', '#050505');
-                root.style.setProperty('--text', '#e0e0e0');
-                root.style.setProperty('--card-bg', 'rgba(255,255,255,0.05)');
-            }
-        }
+        // Entry Animation
+        gsap.from(".unit-card", { opacity: 0, y: 30, duration: 1, stagger: 0.1 });
     </script>
 </body>
-  </html>
-  
+</html>
