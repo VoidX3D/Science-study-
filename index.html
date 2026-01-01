@@ -1,45 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Class 9 Science | Comprehensive Guide</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <style>
-        :root {
-            --primary: #2C3E50; --accent: #27AE60; --bg: #F7F9F9;
-        }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--primary); margin: 0; }
-        .hero { height: 40vh; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; padding: 50px; max-width: 1200px; margin: auto; }
-        .unit-card { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease; text-decoration: none; color: inherit; border-left: 5px solid var(--accent); }
-        .unit-card:hover { transform: translateY(-10px); background: #f0fff4; }
-        .unit-num { font-weight: bold; color: var(--accent); }
-    </style>
+  <meta charset="UTF-8">
+  <title>Grade 9 Science – Interactive Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <!-- JS -->
+  <script defer src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+  <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script defer src="js/main.js"></script>
 </head>
+
 <body>
-    <header class="hero">
-        <div>
-            <h1>Grade 9 Science & Technology</h1>
-            <p>Master your curriculum with interactive lessons & animations</p>
-        </div>
-    </header>
+<header class="hero">
+  <h1>🧪 Grade 9 Science</h1>
+  <p>Interactive • Visual • Exam-Focused</p>
+</header>
 
-    <main class="grid-container">
-        <a href="unit1-scientific-study.html" class="unit-card">
-            <span class="unit-num">Unit 1</span>
-            <h3>Scientific Study</h3>
-            <p>Master the steps of scientific learning and experimental safety.</p>
-        </a>
-        <a href="unit2-classification.html" class="unit-card">
-            <span class="unit-num">Unit 2</span>
-            <h3>Classification of Living Beings</h3>
-            <p>Explore the diverse kingdoms of life.</p>
-        </a>
-        </main>
+<main class="unit-grid">
+  <a href="units/unit1.html" class="unit-card">🔬 Unit 1<br><span>Scientific Study</span></a>
+  <a href="units/unit2.html" class="unit-card">🌱 Unit 2<br><span>Classification</span></a>
+  <a href="units/unit3.html" class="unit-card">🍄 Unit 3<br><span>Mushroom</span></a>
+  <!-- up to unit 19 -->
+</main>
 
-    <script>
-        // Entry Animation
-        gsap.from(".unit-card", { opacity: 0, y: 30, duration: 1, stagger: 0.1 });
-    </script>
+<footer>
+  <p>Built for deep understanding, not memorization.</p>
+</footer>
 </body>
 </html>
